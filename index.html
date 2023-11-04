@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: rgb(20, 19, 19);
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+            align-items: center;
+            perspective: 300px;
+        }
+        .logo,.thor-front{
+            opacity: 0;
+            position: absolute;
+        }
+        .parent{
+            height: 350px;
+            width: 250px;
+            position: relative;
+            transition: all 400ms ease;
+            perspective: 700px;
+            margin-right: 100px;
+
+        }
+        .thor-back{
+            object-fit: cover;
+            object-position: center;
+            height: 350px;
+            width: 250px;
+            position: absolute;
+            z-index: 10;
+            background: linear-gradient(red,blue);
+        }
+        .parent:hover{
+            rotate: x 20deg;
+        }
+        .parent:hover::before{
+            position: absolute;
+            content: "";
+            inset: 0;
+            z-index: 1;
+            background-color: black;
+            transform: translateY(100px);
+            rotate: x -30deg;
+            filter: blur(30px);
+        }
+        .parent:hover::after{
+            position: absolute;
+            content: "";
+            inset: 0;
+            z-index: 20;
+            background: radial-gradient(circle,transparent 20px,black);
+        }
+        .parent:hover .logo,.parent:hover .thor-front{
+            opacity: 1;
+
+        }
+        .logo{
+            z-index: 30;
+            width: 200px;
+            height: 400px;
+            top: 80px;
+            left: 30px;
+            rotate: x -60deg;
+            transition: all 1s ease;
+            filter: drop-shadow(10px 10px 0px black);
+        }
+        .thor-front{
+            z-index: 30;
+            width: 650px;
+            height: 800px;
+            left: -210px;
+            bottom: -100px;
+            rotate: x -55deg;
+            filter: drop-shadow(0px 50px 10px black);
+            transition: all 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <img src="./logo.png" alt="" class="logo">
+        <img src="./thor-back.jpg" alt="" class="thor-back">
+        <img src="./thor-front.png" alt="" class="thor-front">
+    </div>
+</body>4
+</html>
